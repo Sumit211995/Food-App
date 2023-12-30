@@ -19,7 +19,6 @@ class User extends React.Component {
 
     render(){
         const {name, address} = this.props;         //destructure
-        // const {count, count2} = this.state;
 
 
         return(
