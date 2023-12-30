@@ -3,6 +3,7 @@ import RestroCard from "./RestroCards";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 export default function Body() {
   const [restroList, setRestroList] = useState([]);
@@ -62,6 +63,15 @@ export default function Body() {
 
   //   fetchUpdateData();
   // }, []);
+
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return(
+      <h1>Look's like you are offline!! Please check your internet connection.</h1>
+    );
+  }
 
   return restroList?.length === 0 ? (
     <div className="flex flex-wrap mt-12 mx-32">

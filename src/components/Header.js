@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Cart from "../../public/images/shopping_cart.svg";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
 
 const [btnName, setBtnName] = useState("Login");
+
+const onlineStatus = useOnlineStatus();
 
   return (
     <div className="w-full bg-white top-0 z-10">
@@ -13,7 +16,10 @@ const [btnName, setBtnName] = useState("Login");
           p@h@D! 
         </div>
         <div className="flex flex-row text-xl font-georgia">
-          <div className="cursor-pointer hover:text-neutral-700">
+        <div className="cursor-pointer hover:text-neutral-700">
+          Online Status: {onlineStatus ? "✅" : "⛔"}
+          </div>
+          <div className="ml-12 cursor-pointer hover:text-neutral-700">
           <Link to={"/"}>Home</Link>
           </div>
           <div className="ml-12 cursor-pointer hover:text-neutral-700">
@@ -21,6 +27,10 @@ const [btnName, setBtnName] = useState("Login");
           </div>
           <div className="ml-12 cursor-pointer hover:text-neutral-700">
           <Link to={"/contact"}>Contact-us</Link>
+            
+          </div>
+          <div className="ml-12 cursor-pointer hover:text-neutral-700">
+          <Link to={"/grocery"}>Grocery</Link>
             
           </div>
           <div className="ml-12 cursor-pointer hover:text-neutral-700">
