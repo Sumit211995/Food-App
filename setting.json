@@ -1,0 +1,1 @@
+"javascript.suggestionActions.enabled": false

@@ -1,0 +1,30 @@
+{
+  "name": "foodyapp",
+  "version": "1.0.0",
+  "description": "Creating Foody App from Scratch",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build index.html",
+    "eject": "react-scripts eject"
+  },
+  "author": "Sumit Kaktwan",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.4",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1",
+    "tailwindcss": "^3.3.6"
+  },
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
+}
