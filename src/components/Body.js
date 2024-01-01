@@ -1,4 +1,4 @@
-import RestroCard from "./RestroCards";
+import RestroCard, {isOpen} from "./RestroCard";
 // import restroDetails from "../utils/constant";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
@@ -10,7 +10,9 @@ export default function Body() {
   const [searchValue, setSearchValue] = useState("");
   const [filteredRestroList, setFilteredRestroList] = useState([]);
 
-  // console.log(restroList);
+  const RestaurantIsOpen = isOpen(RestroCard);
+
+  console.log(filteredRestroList);
 
   useEffect(() => {
     fetchData();
@@ -81,8 +83,8 @@ export default function Body() {
     </div>
   ) : (
     <div className="mx-32">
-      <div className="flex flex-row justify-between mt-4">
-        <div className="flex item-center justify-center my-4 text-gray-500 text-2xl gap-4 ml-4">
+      <div className="flex flex-row justify-between">
+        <div className="flex item-center justify-center my-12 text-gray-500 text-2xl gap-4 ml-4">
           {/* <label>Search:</label> */}
           <input
             type="text"
@@ -108,7 +110,7 @@ export default function Body() {
         </div>
         <div className="flex justify-end">
           <button
-            className="m-4 py-1 px-2 rounded border bg-green-600 text-white text-md hover:bg-green-800 font-bold"
+            className="mx-4 my-12 px-2 rounded border bg-green-600 text-white text-md hover:bg-green-800 font-bold"
             onClick={() => {
               topRated = restroList.filter((res) => res.info.avgRating > 4);
               setFilteredRestroList(topRated);
@@ -122,7 +124,11 @@ export default function Body() {
       <div className="grid grid-cols-3">
         {filteredRestroList?.map((restaurant) => (
           <div key={restaurant.info.id} className="mb-8">
-          <Link to={"/restaurants/" + restaurant.info.id}><RestroCard restroData={restaurant?.info} /></Link>
+          <Link to={"/restaurants/" + restaurant.info.id}>
+          {
+            restaurant.info.isOpen ? <RestaurantIsOpen restroData={restaurant?.info} /> : <RestroCard restroData={restaurant?.info} />
+          }
+          </Link>
             
           </div>
         ))}

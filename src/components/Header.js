@@ -10,7 +10,7 @@ const [btnName, setBtnName] = useState("Login");
 const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="w-full bg-white top-0 z-10">
+    <div className="w-full bg-amber-50 shadow-lg top-0 z-10">
       <div className="flex mx-32 items-center justify-between border-b border-gray-200 text-gray-500 py-4 px-16">
         <div className="ml-4 font-georgia font-bold text-black text-6xl">
           p@h@D! 
