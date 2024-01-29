@@ -53,7 +53,7 @@ export const isOpen = (RestroCard) =>{
     return(
       <div>
       {
-        props.isOpen ? <label className="absolute z-10 float-right font-bold text-white bg-red-500 p-2 rounded-lg">Closed</label> : <label className="absolute z-10 float-right font-bold text-white bg-orange-400 p-2 rounded-lg">Open</label>
+        props.isOpen ? <label className="absolute z-10 float-right font-bold text-white bg-red-500 p-2 rounded-lg">Closed</label> : <label className="absolute z-10 float-right font-bold text-white bg-amber-500 p-2 rounded-lg">Open</label>
       }
         {/* <label className="absolute float-right font-bold text-white bg-green-500 p-2 rounded-lg">Open</label> */}
         <RestroCard {...props}/>
