@@ -1,5 +1,6 @@
 import Shimmer from "./shimmer";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { CDN_URL } from "../utils/cdn";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
@@ -10,8 +11,9 @@ export default function RestaurantMenu() {
 
 const resInfo = useRestaurantMenu(resId);
 
-  console.log(resInfo);
+  // console.log(resInfo);
 
+  const [showIndex, setShowIndex] = useState(false);
  
 
   let cardInfo = resInfo?.cards[0].card.card.info;
@@ -25,7 +27,7 @@ const categories = (resInfo?.cards[2]?.groupedCard.cardGroupMap.REGULAR.cards).f
 
 // const filterCategories = categories?.filter(item => item.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
-console.log(categories);
+// console.log(categories);
 
   return resInfo === null ? (
     <div className="flex flex-wrap mt-12 mx-32">
@@ -78,8 +80,13 @@ console.log(categories);
             </div> */}
           </div>
           {/* Accordion categories */}
-          {categories?.map((category)=>(
-            <RestaurantCategory data={category?.card?.card}/>
+          {categories?.map((category, index)=>(
+            <RestaurantCategory
+             key={category?.card?.card.title} 
+             data={category?.card?.card}
+              showItems = {index === showIndex ? true : false}
+              setShowIndex = {() => setShowIndex(index)}
+             />
           ))}
         </div>
       </div>

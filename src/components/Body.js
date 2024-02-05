@@ -1,9 +1,11 @@
 import RestroCard, {isOpen} from "./RestroCard";
 // import restroDetails from "../utils/constant";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
+import User from "./User";
 
 export default function Body() {
   const [restroList, setRestroList] = useState([]);
@@ -76,6 +78,8 @@ export default function Body() {
     );
   }
 
+  const {loggedInUser, setUserName} = useContext(UserContext);
+
   return restroList?.length === 0 ? (
     <div className="flex flex-wrap mt-12 mx-32">
       {[...Array(15)].map((_, index) => (
@@ -108,6 +112,14 @@ export default function Body() {
           >
             Search
           </button>
+        </div>
+        <div>
+        <label className="font-bold">User Name:</label>
+          <input  
+          className="my-12 border ml-2"
+            value={loggedInUser}
+            onChange={(e)=> setUserName(e.target.value)}
+          />
         </div>
         <div className="flex justify-end">
           <button
